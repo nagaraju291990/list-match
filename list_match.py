@@ -4,12 +4,12 @@ import sys
 import re
 
 #open file using open file mode
-fp1 = open(sys.argv[1]) # Open file on read mode
+fp1 = open(sys.argv[1]) # Open file on read mode -- input file
 lines = fp1.read().split("\n") # Create a list containing all lines
 fp1.close() # Close file
 
 
-fp2 = open(sys.argv[2]) # Open file on read mode
+fp2 = open(sys.argv[2]) # Open file on read mode -- tab seperated list file
 words = fp2.read().split("\n") # Create a list containing all lines
 fp2.close() # Close file
 
