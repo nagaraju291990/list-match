@@ -1,5 +1,5 @@
 #find and replace words from a tab seperated list into the input file
-#how to run:? python3 list_match.py inputfile.txt list.txt(tab seperated)
+#how to run:? python3 t1_t2_t3_match_and_replace.py inputfile.txt list.txt(tab seperated)
 import sys
 import re
 
@@ -88,6 +88,7 @@ for line in lines:
 				if(re.search(r'/', tgt)):
 					tgt_pipes = tgt.split("|")
 					t1_slashes = tgt_pipes[0]
+					t1 = t1_slashes
 
 					if(re.search(r'/', t1_slashes)):
 						t1s = t1_slashes.split("/")
@@ -117,7 +118,7 @@ for line in lines:
 				if(re.search(r'/', tgt)):
 					tgt_pipes = tgt.split("|")
 					t1_slashes = tgt_pipes[0]
-
+					t1 = t1_slashes
 					if(re.search(r'/', t1_slashes)):
 						t1s = t1_slashes.split("/")
 						for t1ss in t1s:
@@ -126,7 +127,7 @@ for line in lines:
 					else:
 						t1 = t1_slashes	
 
-					if(re.search(r'/', t2)):
+					if(re.search(r'/', tgt_pipes[1])):
 						t2 = tgt_pipes[1].split("/")[0]
 					else:
 						t2 = tgt_pipes[1]
@@ -147,6 +148,7 @@ for line in lines:
 				if(re.search(r'/', tgt)):
 					tgt_pipes = tgt.split("|")
 					t1_slashes = tgt_pipes[0]
+					t1 = t1_slashes
 
 					if(re.search(r'/', t1_slashes)):
 						t1s = t1_slashes.split("/")
@@ -156,7 +158,7 @@ for line in lines:
 					else:
 						t1 = t1_slashes	
 
-					if(re.search(r'/', t2)):
+					if(re.search(r'/',  tgt_pipes[1])):
 						t2 = tgt_pipes[1].split("/")[0]
 					else:
 						t2 = tgt_pipes[1]
@@ -177,6 +179,7 @@ for line in lines:
 				if(re.search(r'/', tgt)):
 					tgt_pipes = tgt.split("|")
 					t1_slashes = tgt_pipes[0]
+					t1 = t1_slashes
 
 					if(re.search(r'/', t1_slashes)):
 						t1s = t1_slashes.split("/")
@@ -186,7 +189,7 @@ for line in lines:
 					else:
 						t1 = t1_slashes	
 
-					if(re.search(r'/', t2)):
+					if(re.search(r'/',  tgt_pipes[1])):
 						t2 = tgt_pipes[1].split("/")[0]
 					else:
 						t2 = tgt_pipes[1]
