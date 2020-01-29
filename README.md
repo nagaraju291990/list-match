@@ -16,6 +16,7 @@ Food Safety	((खाद्य सुरक्षा|फूड सेफ़्ट
 ## To replace ((t1|t2|t3)) in text from input as either t1/t2/t3 as key
 
 List can have many forms for t1 and t2.
+
 Decision is that always first t2 will be used and t1 is replaced with the one matched in input
 
 ```bash
