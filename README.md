@@ -1,4 +1,5 @@
-# How to run?
+# Genralized script to replace from list in a inpu file
+## How to run?
 
 ```bash
 python3 list_match.py inputfile.txt list.txt 
