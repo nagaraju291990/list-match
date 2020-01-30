@@ -37,7 +37,7 @@ UPSC	संघ लोक सेवा आयोग|यूपीएससी|UPSC
 MOOC	मूक|एमओओसी|MOOC
 ```
 
-## To replace ((t1|t2|t3)) in text with either t1/t2 - prune terms
+## To replace ((t1|t2|t3)) in text with either t1/t2 i.e prune terms of format (t1|t2|t3)) to t1 or t2
 ```bash
 python3 prune_term.py input.txt > prune_out.txt
 ```
