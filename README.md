@@ -2,7 +2,7 @@
 ## How to run?
 
 ```bash
-python3 list_match.py inputfile.txt list.txt 
+python3 list_match.py input.txt list.txt 
 ```
 
 ## list file format
@@ -21,7 +21,7 @@ List can have many forms for t1 and t2.
 Decision is that always first t2 will be used and t1 is replaced with the one matched in input
 
 ```bash
-python3 t1_t2_t3_match_and_replace.py inputfile.txt list.txt 
+python3 t1_t2_t3_match_and_replace.py input.txt list.txt 
 ```
 
 ## list file format
@@ -36,3 +36,9 @@ microbiological risks	सूक्ष्मजैविक खतरों/स�
 UPSC	संघ लोक सेवा आयोग|यूपीएससी|UPSC
 MOOC	मूक|एमओओसी|MOOC
 ```
+
+## To replace ((t1|t2|t3)) in text with either t1/t2 - prune terms
+```bash
+python3 prune_term.py input.txt > prune_out.txt
+```
+
