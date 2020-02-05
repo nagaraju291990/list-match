@@ -92,6 +92,7 @@ for line in lines:
 
 					if(re.search(r'/', t1_slashes)):
 						t1s = t1_slashes.split("/")
+						t1 = t1s[0]
 						for t1ss in t1s:
 							if(key == t1ss):
 								t1 = key
@@ -121,6 +122,7 @@ for line in lines:
 					t1 = t1_slashes
 					if(re.search(r'/', t1_slashes)):
 						t1s = t1_slashes.split("/")
+						t1 = t1s[0]
 						for t1ss in t1s:
 							if(key == t1ss):
 								t1 = key
@@ -152,6 +154,7 @@ for line in lines:
 
 					if(re.search(r'/', t1_slashes)):
 						t1s = t1_slashes.split("/")
+						t1 = t1s[0]
 						for t1ss in t1s:
 							if(key == t1ss):
 								t1 = key
@@ -183,6 +186,7 @@ for line in lines:
 
 					if(re.search(r'/', t1_slashes)):
 						t1s = t1_slashes.split("/")
+						t1 = t1s[0]
 						for t1ss in t1s:
 							if(key == t1ss):
 								t1 = key
@@ -196,6 +200,7 @@ for line in lines:
 
 					t3 = tgt_pipes[2]
 					final_t123 = "((" + t1 + "|" + t2 + "|" + t3 + "))"
+					#print(final_t123)
 				else :
 					final_t123 = "((" + tgt +"))"
 

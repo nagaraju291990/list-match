@@ -25,6 +25,7 @@ microbiological risks	((सूक्ष्मजैविक खतरों|म
 food safety management tools	((खाद्य सुरक्षा प्रबंधन के टूल्स|फूड सेफ़्टी मैनेज़मेंट टूल्स|food safety management tools))
 modules	((अनुखण्डों|मॉड्यूल्स|modules))
 Food microbiologist	((खाद्य सूक्ष्मजीववैज्ञानिक|फूड माइक्रोबायोलॉजिस्ट|Food microbiologist))
+microbiologist	सूक्ष्मजीववैज्ञानिक/सूक्ष्मजीव वैज्ञानिक/खाद्य सूक्ष्म जीवविज्ञानी|फूड माइक्रोबायोलॉजिस्ट/फुड-माईक्रोबायोलॉजिस्ट|Food microbiologist
 Food safety officers	((खाद्य सुरक्षा अधिकारी|फूड सेफ़्टी ऑफिसर|Food safety officers))
 food analysis	((खाद्य विश्लेषक|फूड  अनैलेसिस|food analysis))
 Jr	((जूनियर खाद्य विश्लेषक|जूनियर फूड  अनैलेसिस|Jr. food analysis))
