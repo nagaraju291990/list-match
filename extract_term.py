@@ -1,4 +1,4 @@
-#extract ((t1|t2|t3)) , [[t1|t2|t3]] from a file containing t1t2t3 terms
+#extract ((t1|t2|t3)) , [[t1|t2|t3]] from a file containing t1t2t3 terms into tab seperated file
 #how to run:? python3 extract_term.py input.txt
 
 import sys
