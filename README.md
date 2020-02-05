@@ -42,3 +42,6 @@ MOOC	मूक|एमओओसी|MOOC
 python3 prune_term.py input.txt > prune_out.txt
 ```
 
+## To extract ((t1|t2|t3)) or [[t1|t2|t3]] in text and get a tab seperated file
+```bash
+python3 extract_term.py input.txt > extract_out.txt
