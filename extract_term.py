@@ -12,7 +12,7 @@ fp1.close() # Close file
 
 for line in lines:
 	if(line == ""):
-		break
+		continue
 	terms1 = re.findall("(\(\(.*?\)\))", line)
 	for term in terms1:
 		#term = re.escape(term)
