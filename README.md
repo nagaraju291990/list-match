@@ -51,3 +51,8 @@ python3 extract_term.py input.txt > extract_out.txt
 ```bash
 python3 term-list-validator.py input.txt 
 ```
+
+## To convert tab seperated file into t1[TAB]((t1|t2|t3)) format
+```bash
+python3 make_terms.py input.txt 
+```
