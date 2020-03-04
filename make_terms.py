@@ -16,9 +16,10 @@ for line in lines:
 		continue
 
 	words = line.split("\t")
-	src = words[0]
-	meaning = words[2]
-	transliteration = words[1]
+	src = words[1]
+	meaning = words[3:-1]
+	meaning = '/'.join([str(elem) for elem in meaning if elem])
+	transliteration = words[2]
 	if(src.lower() in terms_hash):
 		tmp = terms_hash[src]
 		tmp = re.sub(r'\(\(', '', tmp)
@@ -26,10 +27,10 @@ for line in lines:
 		pipes = tmp.split("|")
 		nmeaning = pipes[0] + "/" + meaning
 		ntransliteration = pipes[1] + "/" + transliteration
-		terms_hash[src.lower()] = "((" + nmeaning + "|" + ntransliteration + "|" + src  + "|))"
+		terms_hash[src.lower()] = nmeaning + "|" + ntransliteration + "|" + src
 	else:
-		terms_hash[src.lower()] = "((" + meaning + "|" + transliteration + "|" + src  + "|))"
+		terms_hash[src.lower()] = meaning + "|" + transliteration + "|" + src
 
 
 for key in terms_hash:
-	print(key, terms_hash[key])
+	print(key, terms_hash[key], sep="\t")

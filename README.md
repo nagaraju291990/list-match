@@ -42,7 +42,7 @@ MOOC	मूक|एमओओसी|MOOC
 python3 prune_term.py input.txt > prune_out.txt
 ```
 
-## To extract ((t1|t2|t3)) or [[t1|t2|t3]] in text and get a tab seperated file
+## To extract ((t1|t2|t3)) or [[t1|t2|t3]] in text and get a tab seperated file in term format
 ```bash
 python3 extract_term.py input.txt > extract_out.txt
 ```
@@ -55,4 +55,9 @@ python3 term-list-validator.py input.txt
 ## To convert tab seperated file into t1[TAB]((t1|t2|t3)) format
 ```bash
 python3 make_terms.py input.txt 
+```
+
+## To extract ((t1|t2|t3)) or [[t1|t2|t3]] in text and get a tab seperated file into tab seperated meaning and transliteration format
+```bash
+python3 extract_term_from_marked_list.py term_marked_input.txt > extract_out.txt
 ```
