@@ -25,8 +25,14 @@ for line in lines:
 		tmp = re.sub(r'\(\(', '', tmp)
 		tmp = re.sub(r'\)\)', '', tmp)
 		pipes = tmp.split("|")
-		nmeaning = pipes[0] + "/" + meaning
-		ntransliteration = pipes[1] + "/" + transliteration
+		if(meaning):
+			nmeaning = pipes[0] + "/" + meaning
+		else:
+			nmeaning = pipes[0]
+		if(transliteration):
+			ntransliteration = pipes[1] + "/" + transliteration
+		else:
+			ntransliteration = pipes[1]
 		terms_hash[src.lower()] = nmeaning + "|" + ntransliteration + "|" + src
 	else:
 		terms_hash[src.lower()] = meaning + "|" + transliteration + "|" + src
