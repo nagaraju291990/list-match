@@ -16,7 +16,7 @@ for line in lines:
 		continue
 
 	words = line.split("\t")
-	src = words[1]
+	src = words[1].lower()
 	meaning = words[3:-1]
 	meaning = '/'.join([str(elem) for elem in meaning if elem])
 	transliteration = words[2]
