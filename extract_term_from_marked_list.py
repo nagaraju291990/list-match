@@ -14,6 +14,7 @@ term_dict = {}
 for line in lines:
 	if(line == ""):
 		continue
+	line2 = line
 	terms1 = re.findall("(\(\(.*?\)\))", line)
 	for term in terms1:
 		#term = re.escape(term)
@@ -39,7 +40,8 @@ for line in lines:
 				term_dict[key] = meaning + "\t" + trans
 		except:
 			print("Invalid",term, sep="\t")
-	terms2 = re.findall("(\[\[.*?\]\])", line)
+	terms2 = re.findall("(\[\[.*?\]\])", line2)
+	#print(line,terms2)
 	for term in terms2:
 		#term = re.escape(term)
 		term = re.sub(r'\।', "|", term)	#replace danda with pipe

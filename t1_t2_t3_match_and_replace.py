@@ -2,6 +2,7 @@
 #how to run:? python3 t1_t2_t3_match_and_replace.py inputfile.txt list.txt(tab seperated)
 import sys
 import re
+from collections import deque
 
 #open file using open file mode
 fp1 = open(sys.argv[1]) # Open file on read mode -- input file
@@ -74,7 +75,7 @@ keys = all_hash.keys()
 #	print(k, "\t",all_hash[k], sep='')
 #skeys = sorted(keys, key=lambda x:x.split(" "),reverse=True)
 #print (skeys)
-
+#lines = deque(lines)
 for line in lines:
 	if(line != ""):
 		for key in keys:
