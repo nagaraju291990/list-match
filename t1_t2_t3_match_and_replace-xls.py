@@ -147,9 +147,11 @@ for line in lines:
 					else:
 						t2 = tgt_pipes[1]
 					t3 = tgt_pipes[2]
-					final_t123 = "((" + t1 + "|" + t2 + "|" + t3 + "))"
+					#final_t123 = "((" + t1 + "|" + t2 + "|" + t3 + "))"
+					final_t123 = ''.join(["((" , t1 , "|" , t2 , "|" , t3 , "))"])
 				else :
-					final_t123 = "((" + tgt +"))"
+					#final_t123 = "((" + tgt +"))"
+					final_t123 = ''.join(["((" , tgt , "))"])
 				
 				final_t123 = re.sub(r' ', "replaced###already", final_t123, flags=re.IGNORECASE|re.MULTILINE)
 
@@ -177,9 +179,11 @@ for line in lines:
 					else:
 						t2 = tgt_pipes[1]
 					t3 = tgt_pipes[2]
-					final_t123 = "((" + t1 + "|" + t2 + "|" + t3 + "))"
+					#final_t123 = "((" + t1 + "|" + t2 + "|" + t3 + "))"
+					final_t123 = ''.join(["((" , t1 , "|" , t2 , "|" , t3 , "))"])
 				else :
-					final_t123 = "((" + tgt +"))"
+					#final_t123 = "((" + tgt +"))"
+					final_t123 = ''.join(["((" , tgt , "))"])
 
 
 				final_t123 = re.sub(r' ', "replaced###already", final_t123, flags=re.IGNORECASE|re.MULTILINE)
@@ -210,9 +214,11 @@ for line in lines:
 						t2 = tgt_pipes[1]
 
 					t3 = tgt_pipes[2]
-					final_t123 = "((" + t1 + "|" + t2 + "|" + t3 + "))"
+					#final_t123 = "((" + t1 + "|" + t2 + "|" + t3 + "))"
+					final_t123 = ''.join(["((" , t1 , "|" , t2 , "|" , t3 , "))"])
 				else :
-					final_t123 = "((" + tgt +"))"
+					#final_t123 = "((" + tgt +"))"
+					final_t123 = ''.join(["((" , tgt , "))"])
 
 				final_t123 = re.sub(r' ', "replaced###already", final_t123, flags=re.IGNORECASE|re.MULTILINE)
 				line = re.sub(r"^" + key, final_t123, line,flags=re.IGNORECASE|re.UNICODE|re.MULTILINE)
@@ -242,10 +248,12 @@ for line in lines:
 						t2 = tgt_pipes[1]
 
 					t3 = tgt_pipes[2]
-					final_t123 = "((" + t1 + "|" + t2 + "|" + t3 + "))"
+					#final_t123 = "((" + t1 + "|" + t2 + "|" + t3 + "))"
+					final_t123 = ''.join(["((" , t1 , "|" , t2 , "|" , t3 , "))"])
 					#print(final_t123)
 				else :
-					final_t123 = "((" + tgt +"))"
+					#	final_t123 = "((" + tgt +"))"
+					final_t123 = ''.join(["((" , tgt , "))"])
 
 				final_t123 = re.sub(r' ', "replaced###already", final_t123, flags=re.IGNORECASE|re.MULTILINE)
 				line = re.sub(r"^" + key + r"$", final_t123 ,line,flags=re.IGNORECASE|re.UNICODE|re.MULTILINE)
