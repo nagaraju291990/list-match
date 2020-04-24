@@ -26,7 +26,10 @@ for line in lines:
 		tmp = re.sub(r'\)\)', '', tmp)
 		pipes = tmp.split("|")
 		if(meaning):
-			nmeaning = pipes[0] + "/" + meaning
+			if(pipes[0]):
+				nmeaning = pipes[0] + "/" + meaning
+			else:
+				nmeaning = meaning
 		else:
 			nmeaning = pipes[0]
 		if(transliteration):
