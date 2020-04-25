@@ -62,6 +62,7 @@ for word in words:
 	word = re.sub(r'#', "|", word, 1)
 	word = re.sub(r'#', '/', word)
 	word = re.sub(r'/nan', "", word)
+	word = re.sub(r'nan', "", word)
 	#print(word)
 	word = re.sub(r'(.*)\t(.*)\|(.*)', r"\1\t\3|\2|\1", word)
 	#print(word)

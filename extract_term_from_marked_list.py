@@ -25,16 +25,19 @@ for line in lines:
 		term = re.sub(r'^ *', "", term, flags = re.MULTILINE)
 		line = re.sub(r' *$', "", term, flags = re.MULTILINE)
 		term = re.sub(r' +', " ", term, flags = re.MULTILINE)
+		#print(term)
 
 		tokens =  re.findall("\(\((.*)?\|(.*)?\|(.*)?\)\)", term)
 
 		try:
 			key = tokens[0][2].lower()
 			meaning = tokens[0][0]
+			meaning = meaning.strip()
 			trans = tokens[0][1]
 
 			if(key in term_dict):
 				tmp = term_dict[key]
+				#if(meaning):
 				term_dict[key] = meaning + "/" + tmp
 			else:
 				term_dict[key] = meaning + "\t" + trans
@@ -75,4 +78,6 @@ for k in term_dict:
 	meanings = vals[0].split("/")
 	meanings = list(set(meanings))
 	unique_meanings = "/".join(meanings)
-	print(k, unique_meanings, vals[1], sep="\t")
+	unique_meanings = re.sub(r'^\/', '', unique_meanings)
+	#print(k, unique_meanings, vals[1], sep="\t")
+	print(k, vals[1], unique_meanings, sep="\t")
