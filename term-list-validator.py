@@ -41,11 +41,12 @@ for line in lines.split("\n"):
 		#print("Line no:%s, tokens:%s" %(line_no,tokens))
 		for i in tokens:
 			if(i[1] == "" or i[2] == ""):
-				print("Line no:%s token missing at:%s" %(line_no, m))
+				print("Line no:%s token missing at:%s" %(line_no, col2))
 				#f.write("Line no:%s Term missing at:%s\n" %(line_no, col2))
 				flag = 1
 			elif(re.search("[A-z]",i[0]) or re.search("[A-z]",i[1])):
-				print("Line no:%s T1 or T2 has Roman text at:%s" %(line_no, m))
+				print("Line no:%s T1 or T2 has Roman text at:%s" %(line_no,
+                    col2))
 				#f.write("Line no:%s Term T1 or T2 has Roman text at:%s\n" %(line_no, col2))
 				flag = 1
 	else:
@@ -62,4 +63,4 @@ for line in lines.split("\n"):
 if(flag == 0):
 	#print("Input file passed all validation tests!")
 	f.write("Input file passed all validation tests!")
-		
+
