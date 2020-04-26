@@ -65,3 +65,8 @@ python3 make_terms.py input.txt
 ```bash
 python3 extract_term_from_marked_list.py term_marked_input.txt > extract_out.txt
 ```
+
+## Run shell with input and output directory
+```bash
+sh run_shell.sh input/ termbase-for-terminology-automation-3.4.xlsx output
+```
