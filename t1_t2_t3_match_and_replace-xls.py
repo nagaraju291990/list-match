@@ -65,6 +65,7 @@ for word in words:
 	word = re.sub(r'nan', "", word)
 	#print(word)
 	word = re.sub(r'(.*)\t(.*)\|(.*)', r"\1\t\3|\2|\1", word)
+	word = re.sub(r'\t/', "\t", word)
 	#print(word)
 	#word = word.lower()
 	if(word != ""):
@@ -107,7 +108,7 @@ for word in words:
 					word_hash[terms] = t1t2t3
 
 #print(word_hash)
-
+#exit()
 for d in (six_word_hash, five_word_hash, four_word_hash, three_word_hash, two_word_hash, word_hash):
 	all_hash.update(d)
 
