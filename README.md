@@ -40,6 +40,11 @@ microbiological risks	सूक्ष्मजैविक खतरों/स�
 UPSC	संघ लोक सेवा आयोग|यूपीएससी|UPSC
 MOOC	मूक|एमओओसी|MOOC
 ```
+## To tag Accronyms
+
+```
+python3 mark_accr.py accr_list.txt accr_input.txt > accr_marked_out.txt
+```
 
 ## To replace ((t1|t2|t3)) in text with either t1/t2 i.e prune terms of format (t1|t2|t3)) to t1 or t2
 ```bash
