@@ -115,13 +115,13 @@ for d in (six_word_hash, five_word_hash, four_word_hash, three_word_hash, two_wo
 #keys = word_hash.keys()
 keys = all_hash.keys()
 #for k in keys:
-#	print(k, "\t",all_hash[k], sep='')
+	#print(k, "\t",all_hash[k], sep='')
 #skeys = sorted(keys, key=lambda x:x.split(" "),reverse=True)
 #print (skeys)
 #lines = deque(lines)
 #exit()
 for line in lines:
-	if(line != ""):
+	if(line != ""  and not re.search(r'\d\d:\d\d:\d\d,\d\d\d --> \d\d:\d\d:\d\d,\d\d\d', line) and not re.search(r'^\d+', line)):
 		for key in keys:
 			#my_regex = key + r"\b"
 			my_regex = r"([,\"\'\( \/\-\|])" + key + r"([ ,\.!\"।\'\/\-)])"
