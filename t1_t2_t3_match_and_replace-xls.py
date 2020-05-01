@@ -120,9 +120,15 @@ keys = all_hash.keys()
 #print (skeys)
 #lines = deque(lines)
 #exit()
-for line in lines:
-	if(line != ""  and not re.search(r'\d\d:\d\d:\d\d,\d\d\d --> \d\d:\d\d:\d\d,\d\d\d', line) and not re.search(r'^\d+', line)):
-		for key in keys:
+k = 0
+i = 0
+#out = []
+kl = len(keys)-1
+for key in keys:
+	i = 0
+		
+	for line in lines:
+		if(line != ""  and not re.search(r'\d\d:\d\d:\d\d,\d\d\d --> \d\d:\d\d:\d\d,\d\d\d', line) and not re.search(r'^\d+', line)):
 			#my_regex = key + r"\b"
 			my_regex = r"([,\"\'\( \/\-\|])" + key + r"([ ,\.!\"।\'\/\-)])"
 			#print(my_regex)
@@ -260,9 +266,24 @@ for line in lines:
 				final_t123 = re.sub(r' ', "replaced###already", final_t123, flags=re.IGNORECASE|re.MULTILINE)
 				line = re.sub(r"^" + key + r"$", final_t123 ,line,flags=re.IGNORECASE|re.UNICODE|re.MULTILINE)
 				#print("iam4 :",line, key)
-		line = re.sub(r'2replaced###already', "", line, flags=re.IGNORECASE|re.MULTILINE)
-		line = re.sub(r'replaced###already', " ", line, flags=re.IGNORECASE|re.MULTILINE)
+			#line = re.sub(r'2replaced###already', "", line, flags=re.IGNORECASE|re.MULTILINE)
+			#line = re.sub(r'replaced###already', " ", line, flags=re.IGNORECASE|re.MULTILINE)
+			lines[i] = line
+		else:
+			lines[i] = line
+
+		i = i + 1
+		#print(line, key)
+		#if(kl == i):
+			#print(line)
 		#line = re.sub(r"piped###already", "|", line, flags = re.IGNORECASE|re.MULTILINE)
-		print(line)
-	else:
-		print(line)
+	
+	#print(i, kl)
+	
+	
+	#else:
+	#print(line)
+for line in lines:
+	line = re.sub(r'2replaced###already', "", line, flags=re.IGNORECASE|re.MULTILINE)
+	line = re.sub(r'replaced###already', " ", line, flags=re.IGNORECASE|re.MULTILINE)
+	print(line)
