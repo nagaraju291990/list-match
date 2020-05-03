@@ -10,6 +10,7 @@ fp1 = open(sys.argv[1]) # Open file on read mode -- input file
 lines = fp1.read().split("\n") # Create a list containing all lines
 fp1.close() # Close file
 
+outfp = open("list_hash.txt","w")
 
 #fp2 = open(sys.argv[2]) # Open file on read mode -- tab seperated list file
 #words = fp2.read().split("\n") # Create a list containing all lines
@@ -114,8 +115,9 @@ for d in (six_word_hash, five_word_hash, four_word_hash, three_word_hash, two_wo
 
 #keys = word_hash.keys()
 keys = all_hash.keys()
-#for k in keys:
+for k in keys:
 	#print(k, "\t",all_hash[k], sep='')
+	outfp.write(k + "\t" + all_hash[k] + "\n")
 #skeys = sorted(keys, key=lambda x:x.split(" "),reverse=True)
 #print (skeys)
 #lines = deque(lines)
