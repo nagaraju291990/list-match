@@ -130,7 +130,7 @@ for key in keys:
 	i = 0
 		
 	for line in lines:
-		if(line != ""  and not re.search(r'\d\d:\d\d:\d\d,\d\d\d --> \d\d:\d\d:\d\d,\d\d\d', line) and not re.search(r'^\d+', line)):
+		if(line != ""  and not re.search(r'\d\d:\d\d:\d\d,\d\d\d --> \d\d:\d\d:\d\d,\d\d\d', line) and not re.search(r'^\d+$', line)):
 			#my_regex = key + r"\b"
 			my_regex = r"([,\"\'\( \/\-\|])" + key + r"([ ,\.!\"।\'\/\-)])"
 			#print(my_regex)
