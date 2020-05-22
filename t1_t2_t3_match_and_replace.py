@@ -77,12 +77,19 @@ keys = all_hash.keys()
 #skeys = sorted(keys, key=lambda x:x.split(" "),reverse=True)
 #print (skeys)
 #lines = deque(lines)
-for line in lines:
-	if(line != ""  and not re.search(r'\d\d:\d\d:\d\d,\d\d\d --> \d\d:\d\d:\d\d,\d\d\d', line) and not re.search(r'^\d+', line)):
-		#print("iam",line)
-		for key in keys:
+k = 0
+i = 0
+kl = len(keys)-1
+
+for key in keys:
+	#print(key)
+	i = 0
+	for line in lines:
+		#print(key,line)
+		if(line != ""  and not re.search(r'\d\d:\d\d:\d\d,\d\d\d --> \d\d:\d\d:\d\d,\d\d\d', line) and not re.search(r'^\d+', line)):
+			#print("iam",line)
 			#my_regex = key + r"\b"
-			my_regex = r"([,\"\'\( \/\-\|])" + key + r"([ ,\.!\"।\'\/\-)])"
+			my_regex = r"(^|[,\"\'\( \/\|])" + key + r"([ ,\.!\"।\'\/)]|$)"
 			#print(my_regex)
 			if((re.search(my_regex, line, re.IGNORECASE|re.UNICODE))):
 				tgt = all_hash[key] + "2replaced###already"
@@ -100,7 +107,7 @@ for line in lines:
 							if(key == t1ss):
 								t1 = key
 					else:
-						t1 = t1_slashes	
+						t1 = t1_slashes
 
 					if(re.search(r'/', tgt_pipes[1])):
 						t2 = tgt_pipes[1].split("/")[0]
@@ -110,12 +117,12 @@ for line in lines:
 					final_t123 = "((" + t1 + "|" + t2 + "|" + t3 + "))"
 				else :
 					final_t123 = "((" + tgt +"))"
-				
+
 				final_t123 = re.sub(r' ', "replaced###already", final_t123, flags=re.IGNORECASE|re.MULTILINE)
 
 				line = re.sub(my_regex, r"\1" + final_t123 +r"\2",line,flags=re.IGNORECASE|re.UNICODE|re.MULTILINE)
 				#print("iam :1",line, key, all_hash[key])
-			if((re.search(r"([,\"\'\( \/\-])" + key + r"$", line, re.IGNORECASE|re.UNICODE))):
+			if((re.search(r"([,\"\'\( \/])" + key + r"$", line, re.IGNORECASE|re.UNICODE)) and 0 ):
 				tgt = all_hash[key] + "2replaced###already"
 				#tgt = re.sub(r' ', "replaced###already", tgt, flags=re.IGNORECASE|re.MULTILINE)
 				#tgt = re.sub(r'\|',"piped###already", tgt, flags = re.IGNORECASE|re.MULTILINE)
@@ -130,7 +137,7 @@ for line in lines:
 							if(key == t1ss):
 								t1 = key
 					else:
-						t1 = t1_slashes	
+						t1 = t1_slashes
 
 					if(re.search(r'/', tgt_pipes[1])):
 						t2 = tgt_pipes[1].split("/")[0]
@@ -146,7 +153,7 @@ for line in lines:
 				line = re.sub(key+r"$", final_t123 ,line,flags=re.IGNORECASE|re.UNICODE|re.MULTILINE)
 
 				#print("iam :2",line, key)
-			if((re.search(r"^" + key + r"([ ,\.!\"।\'\/\-)])", line, re.IGNORECASE|re.UNICODE))):
+			if((re.search(r"^" + key + r"([ ,\.!\"।\'\/)])", line, re.IGNORECASE|re.UNICODE)) and 0):
 				tgt = all_hash[key]+ "2replaced###already"
 				#tgt = re.sub(r' ', "replaced###already", tgt, flags=re.IGNORECASE|re.MULTILINE)
 				#tgt = re.sub(r'\|',"piped###already", tgt, flags = re.IGNORECASE|re.MULTILINE)
@@ -162,7 +169,7 @@ for line in lines:
 							if(key == t1ss):
 								t1 = key
 					else:
-						t1 = t1_slashes	
+						t1 = t1_slashes
 
 					if(re.search(r'/',  tgt_pipes[1])):
 						t2 = tgt_pipes[1].split("/")[0]
@@ -177,7 +184,7 @@ for line in lines:
 				final_t123 = re.sub(r' ', "replaced###already", final_t123, flags=re.IGNORECASE|re.MULTILINE)
 				line = re.sub(r"^" + key, final_t123, line,flags=re.IGNORECASE|re.UNICODE|re.MULTILINE)
 				#print("iam3 :",line, key, key)
-			if((re.search(r"^" + key + r"$", line, re.IGNORECASE|re.UNICODE))):
+			if((re.search(r"^" + key + r"$", line, re.IGNORECASE|re.UNICODE)) and 0):
 				#print(line)
 				tgt = all_hash[key]+ "2replaced###already"
 				#tgt = re.sub(r' ', "replaced###already", tgt, flags=re.IGNORECASE|re.MULTILINE)
@@ -194,7 +201,7 @@ for line in lines:
 							if(key == t1ss):
 								t1 = key
 					else:
-						t1 = t1_slashes	
+						t1 = t1_slashes
 
 					if(re.search(r'/',  tgt_pipes[1])):
 						t2 = tgt_pipes[1].split("/")[0]
@@ -210,9 +217,17 @@ for line in lines:
 				final_t123 = re.sub(r' ', "replaced###already", final_t123, flags=re.IGNORECASE|re.MULTILINE)
 				line = re.sub(r"^" + key + r"$", final_t123 ,line,flags=re.IGNORECASE|re.UNICODE|re.MULTILINE)
 				#print("iam4 :",line, key)
-		line = re.sub(r'2replaced###already', "", line, flags=re.IGNORECASE|re.MULTILINE)
-		line = re.sub(r'replaced###already', " ", line, flags=re.IGNORECASE|re.MULTILINE)
-		#line = re.sub(r"piped###already", "|", line, flags = re.IGNORECASE|re.MULTILINE)
-		print(line)
-	else:
-		print(line)
+			#line = re.sub(r'2replaced###already', "", line, flags=re.IGNORECASE|re.MULTILINE)
+			#line = re.sub(r'replaced###already', " ", line, flags=re.IGNORECASE|re.MULTILINE)
+			#line = re.sub(r"piped###already", "|", line, flags = re.IGNORECASE|re.MULTILINE)
+			#print(line)
+			lines[i] = line
+		else:
+			lines[i] = line
+
+		i = i + 1
+			#print(line)
+for line in lines:
+	line = re.sub(r'2replaced###already', "", line, flags=re.IGNORECASE|re.MULTILINE)
+	line = re.sub(r'replaced###already', " ", line, flags=re.IGNORECASE|re.MULTILINE)
+	print(line)
