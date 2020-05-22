@@ -128,11 +128,11 @@ i = 0
 kl = len(keys)-1
 for key in keys:
 	i = 0
-		
+	#key = re.escape(key)	
 	for line in lines:
 		if(line != ""  and not re.search(r'\d\d:\d\d:\d\d,\d\d\d --> \d\d:\d\d:\d\d,\d\d\d', line) and not re.search(r'^\d+$', line)):
 			#my_regex = key + r"\b"
-			my_regex = r"([,\"\'\( \/\-\|])" + key + r"([ ,\.!\"।\'\/\-)])"
+			my_regex = r"([,\"\'\( \/\|])" + key + r"([ ,\.!\"।\'\/)])"
 			#print(my_regex)
 			if((re.search(my_regex, line, re.IGNORECASE|re.UNICODE))):
 				tgt = all_hash[key] + "2replaced###already"
@@ -167,7 +167,7 @@ for key in keys:
 
 				line = re.sub(my_regex, r"\1" + final_t123 +r"\2",line,flags=re.IGNORECASE|re.UNICODE|re.MULTILINE)
 				#print("iam :1",line, key, all_hash[key])
-			if((re.search(r"([,\"\'\( \/\-])" + key + r"$", line, re.IGNORECASE|re.UNICODE))):
+			if((re.search(r"([,\"\'\( \/])" + key + r"$", line, re.IGNORECASE|re.UNICODE))):
 				tgt = all_hash[key] + "2replaced###already"
 				#tgt = re.sub(r' ', "replaced###already", tgt, flags=re.IGNORECASE|re.MULTILINE)
 				#tgt = re.sub(r'\|',"piped###already", tgt, flags = re.IGNORECASE|re.MULTILINE)
@@ -200,7 +200,7 @@ for key in keys:
 				line = re.sub(key+r"$", final_t123 ,line,flags=re.IGNORECASE|re.UNICODE|re.MULTILINE)
 
 				#print("iam :2",line, key)
-			if((re.search(r"^" + key + r"([ ,\.!\"।\'\/\-)])", line, re.IGNORECASE|re.UNICODE))):
+			if((re.search(r"^" + key + r"([ ,\.!\"।\'\/)])", line, re.IGNORECASE|re.UNICODE))):
 				tgt = all_hash[key]+ "2replaced###already"
 				#tgt = re.sub(r' ', "replaced###already", tgt, flags=re.IGNORECASE|re.MULTILINE)
 				#tgt = re.sub(r'\|',"piped###already", tgt, flags = re.IGNORECASE|re.MULTILINE)
