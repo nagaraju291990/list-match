@@ -115,7 +115,7 @@ for key in keys:
 		if(line != ""  and not re.search(r'\d\d:\d\d:\d\d,\d\d\d --> \d\d:\d\d:\d\d,\d\d\d', line) and not re.search(r'^\d+', line)):
 			#print("iam",line)
 			#my_regex = key + r"\b"
-			my_regex = r"(^|[,\"\'\( \/\|])" + key + r"([ ,\.!\"।\'\/)]|$)"
+			my_regex = r"(^|[,\"\'\( \/\|])" + key + r"([ ,\.!\"।\'\/\;\:)]|$)"
 			#print(my_regex)
 			if((re.search(my_regex, line, re.IGNORECASE|re.UNICODE))):
 				tgt = all_hash[key] + "2replaced###already"
