@@ -21,13 +21,15 @@ List can have many forms for t1 and t2.
 Decision is that always first t2 will be used and t1 is replaced with the one matched in input
 
 ```bash
-python3 t1_t2_t3_match_and_replace.py input.txt list.txt 
+python3 t1_t2_t3_match_and_replace.py -i=input.txt -t=list.txt -l=hin/tel -f=y/n
+-f (consistency flag for lexical items is optional default is n)
 ```
 
 ## To replace ((t1|t2|t3)) in text from input as either t1/t2/t3 as key from xlsx file 
 ```
-python3 t1_t2_t3_match_and_replace-xls.py input.txt list.xlsx
+python3 t1_t2_t3_match_and_replace-xls.py -t=/home/nagaraju/Downloads/termbase-for-terminology-automation-3.1.xlsx -i=FMFS_Transcription_Module_39_eng_hin-reviewed.txt -l=hin/tel -f=y/n
 ```
+-f (consistency flag for lexical items is optional default is n)
 ## list file format
 ```bash
 microorganisms	सूक्ष्मजीव|माइक्रोऑर्गनिज़म/माईक्रोऑर्गनिज़म/माइक्रोऑर्गनिजम|microorganisms

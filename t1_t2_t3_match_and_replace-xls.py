@@ -4,9 +4,36 @@ import sys
 import re
 from collections import deque
 import pandas as pd
+from argparse import ArgumentParser
+
+parser = ArgumentParser(description='This script will align Subtitle translation files\n\r'+
+						"How to Run?\n" +
+						"python3 " + sys.argv[0] + " -i=input.srt" + " -s=srctext.txt -t=target.txt"
+						)
+parser.add_argument("-i", "--input", dest="inputfile",
+                    help="provide input file name",required=True)
+parser.add_argument("-t", "--terms", dest="listfile",
+                    help="provide list file in xlsx",required=True)
+parser.add_argument("-l", "--lang", dest="lang",
+                    help="provide lang=hin/tel",required=True)
+parser.add_argument("-f", "--flag", dest="con_flag",
+                    help="choose this option for consistency in lexical items -f=y",required=False)
+
+args = parser.parse_args()
+
+inputfile = args.inputfile
+listfile = args.listfile
+lang = args.lang
+con_flag = args.con_flag
+
+if(con_flag is None):
+	con_flag = 'n'
+else:
+	con_flag = con_flag.lower()
+
 
 #open file using open file mode
-fp1 = open(sys.argv[1]) # Open file on read mode -- input file
+fp1 = open(inputfile) # Open file on read mode -- input file
 lines = fp1.read().split("\n") # Create a list containing all lines
 fp1.close() # Close file
 
@@ -16,7 +43,7 @@ outfp = open("list_hash.txt","w")
 #words = fp2.read().split("\n") # Create a list containing all lines
 #fp2.close() # Close file
 
-df = pd.read_excel(sys.argv[2])
+df = pd.read_excel(listfile)
 df1 = df
 
 words = []
@@ -132,7 +159,7 @@ for key in keys:
 	for line in lines:
 		if(line != ""  and not re.search(r'\d\d:\d\d:\d\d,\d\d\d --> \d\d:\d\d:\d\d,\d\d\d', line) and not re.search(r'^\d+$', line)):
 			#my_regex = key + r"\b"
-			my_regex = r"([,\"\'\( \/\|])" + key + r"([ ,\.!\"।\'\/)])"
+			my_regex = r"(^|[,\"\'\( \/\|])" + key + r"([ ,\.!\"।\'\/)]|$)"
 			#print(my_regex)
 			if((re.search(my_regex, line, re.IGNORECASE|re.UNICODE))):
 				tgt = all_hash[key] + "2replaced###already"
@@ -147,13 +174,19 @@ for key in keys:
 						t1s = t1_slashes.split("/")
 						t1 = t1s[0]
 						for t1ss in t1s:
-							if(key == t1ss):
+							if(key == t1ss and con_flag == 'n'):
 								t1 = key
 					else:
 						t1 = t1_slashes	
 
 					if(re.search(r'/', tgt_pipes[1])):
 						t2 = tgt_pipes[1].split("/")[0]
+						if(lang == "tel"):
+							tt = tgt_pipes[1].split("/")
+							for t in tt:
+								if(t1 != ""):
+									if(re.search(r''+t[-1], t1[-1] ) and t1 != ""):
+										t2 = t
 					else:
 						t2 = tgt_pipes[1]
 					t3 = tgt_pipes[2]
@@ -167,7 +200,7 @@ for key in keys:
 
 				line = re.sub(my_regex, r"\1" + final_t123 +r"\2",line,flags=re.IGNORECASE|re.UNICODE|re.MULTILINE)
 				#print("iam :1",line, key, all_hash[key])
-			if((re.search(r"([,\"\'\( \/])" + key + r"$", line, re.IGNORECASE|re.UNICODE))):
+			if((re.search(r"([,\"\'\( \/])" + key + r"$", line, re.IGNORECASE|re.UNICODE)) and 0):
 				tgt = all_hash[key] + "2replaced###already"
 				#tgt = re.sub(r' ', "replaced###already", tgt, flags=re.IGNORECASE|re.MULTILINE)
 				#tgt = re.sub(r'\|',"piped###already", tgt, flags = re.IGNORECASE|re.MULTILINE)
@@ -200,7 +233,7 @@ for key in keys:
 				line = re.sub(key+r"$", final_t123 ,line,flags=re.IGNORECASE|re.UNICODE|re.MULTILINE)
 
 				#print("iam :2",line, key)
-			if((re.search(r"^" + key + r"([ ,\.!\"।\'\/)])", line, re.IGNORECASE|re.UNICODE))):
+			if((re.search(r"^" + key + r"([ ,\.!\"।\'\/)])", line, re.IGNORECASE|re.UNICODE)) and 0):
 				tgt = all_hash[key]+ "2replaced###already"
 				#tgt = re.sub(r' ', "replaced###already", tgt, flags=re.IGNORECASE|re.MULTILINE)
 				#tgt = re.sub(r'\|',"piped###already", tgt, flags = re.IGNORECASE|re.MULTILINE)
@@ -233,7 +266,7 @@ for key in keys:
 				final_t123 = re.sub(r' ', "replaced###already", final_t123, flags=re.IGNORECASE|re.MULTILINE)
 				line = re.sub(r"^" + key, final_t123, line,flags=re.IGNORECASE|re.UNICODE|re.MULTILINE)
 				#print("iam3 :",line, key, key)
-			if((re.search(r"^" + key + r"$", line, re.IGNORECASE|re.UNICODE))):
+			if((re.search(r"^" + key + r"$", line, re.IGNORECASE|re.UNICODE)) and 0):
 				#print(line)
 				tgt = all_hash[key]+ "2replaced###already"
 				#tgt = re.sub(r' ', "replaced###already", tgt, flags=re.IGNORECASE|re.MULTILINE)
