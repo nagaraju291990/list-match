@@ -79,5 +79,5 @@ for k in term_dict:
 	meanings = list(set(meanings))
 	unique_meanings = "/".join(meanings)
 	unique_meanings = re.sub(r'^\/', '', unique_meanings)
-	#print(k, unique_meanings, vals[1], sep="\t")
-	print(k, vals[1], unique_meanings, sep="\t")
+	print(k, unique_meanings, vals[1], sep="\t")
+	#print(k, vals[1], unique_meanings, sep="\t")
