@@ -319,6 +319,7 @@ for key in keys:
 	#else:
 	#print(line)
 for line in lines:
+	line = re.sub(r'\((.*)?\|\1\|', r'(|\1|', line, flags=re.IGNORECASE|re.MULTILINE)#delete  t1 if t1==t2
 	line = re.sub(r'2replaced###already', "", line, flags=re.IGNORECASE|re.MULTILINE)
 	line = re.sub(r'replaced###already', " ", line, flags=re.IGNORECASE|re.MULTILINE)
 	print(line)
