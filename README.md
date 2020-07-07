@@ -13,6 +13,16 @@ Food Microbiology	((खाद्य सूक्ष्मजीवविज्�
 Food Safety	((खाद्य सुरक्षा|फूड सेफ़्टी|Food Safety))
 ```
 
+## To replace as _t2_ in text from input as either t1/t2/t3 as key
+
+List can have many forms for t1 and t2.
+
+Decision is that always first t2 will be used
+
+```bash
+python3 domain_term_substitution.py -i=input.txt -t=list.xlsx -l=hin/tel -f=y/n
+-f (consistency flag for lexical items is optional default is n)
+```
 
 ## To replace ((t1|t2|t3)) in text from input as either t1/t2/t3 as key
 
