@@ -126,6 +126,7 @@ for k in keys:
 k = 0
 i = 0
 #out = []
+extracted_terms = {}
 kl = len(keys)-1
 for key in keys:
 	i = 0
@@ -165,10 +166,15 @@ for key in keys:
 						t2 = tgt_pipes[1]
 					t3 = tgt_pipes[2]
 					#final_t123 = "((" + t1 + "|" + t2 + "|" + t3 + "))"
+					e = all_hash[key].split("|")[2]
+					m = all_hash[key].split("|")[0]
+					t = all_hash[key].split("|")[1]
+					extracted_terms[e] = ''.join([m, "\t", t]) 
 					final_t123 = ''.join(["_" , t2 , "_"])
 				else :
 					#final_t123 = "((" + tgt +"))"
 					final_t123 = ''.join(["_" , tgt.split("|")[1] , "_"])
+					extracted_terms[tgt.split("|")[2]] = ''.join([tgt.split("|")[0], "\t", tgt.split("|")[1]])
 				#print(final_t123)
 				final_t123 = re.sub(r' ', "replaced###already", final_t123, flags=re.IGNORECASE|re.MULTILINE)
 
@@ -179,6 +185,17 @@ for key in keys:
 			lines[i] = line
 
 		i = i + 1
+
+outfp2 = open("extracted_terms.txt","w")
+keys = extracted_terms.keys()
+for k in keys:
+	val = extracted_terms[k]
+	k1 = k
+	k1 = re.sub(r'2replaced###already', "", k1, flags=re.IGNORECASE|re.MULTILINE)
+	k1 = re.sub(r'replaced###already', " ", k1, flags=re.IGNORECASE|re.MULTILINE)
+	val = re.sub(r'2replaced###already', "", val, flags=re.IGNORECASE|re.MULTILINE)
+	val = re.sub(r'replaced###already', " ", val, flags=re.IGNORECASE|re.MULTILINE)
+	outfp2.write(k1 + "\t" + val + "\n")
 
 for line in lines:
 	line = re.sub(r'\((.*)?\|\1\|', r'(|\1|', line, flags=re.IGNORECASE|re.MULTILINE)#delete  t1 if t1==t2
