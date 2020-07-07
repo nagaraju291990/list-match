@@ -166,15 +166,15 @@ for key in keys:
 						t2 = tgt_pipes[1]
 					t3 = tgt_pipes[2]
 					#final_t123 = "((" + t1 + "|" + t2 + "|" + t3 + "))"
-					e = all_hash[key].split("|")[2]
-					m = all_hash[key].split("|")[0]
-					t = all_hash[key].split("|")[1]
-					extracted_terms[e] = ''.join([m, "\t", t]) 
+					e = all_hash[key].split("|")[2] #english
+					m = all_hash[key].split("|")[0]	#meaning
+					t = all_hash[key].split("|")[1]	#transliteration
+					extracted_terms[e] = ''.join([t, "\t", m]) 
 					final_t123 = ''.join(["_" , t2 , "_"])
 				else :
 					#final_t123 = "((" + tgt +"))"
 					final_t123 = ''.join(["_" , tgt.split("|")[1] , "_"])
-					extracted_terms[tgt.split("|")[2]] = ''.join([tgt.split("|")[0], "\t", tgt.split("|")[1]])
+					extracted_terms[tgt.split("|")[2]] = ''.join([tgt.split("|")[1], "\t", tgt.split("|")[0]])
 				#print(final_t123)
 				final_t123 = re.sub(r' ', "replaced###already", final_t123, flags=re.IGNORECASE|re.MULTILINE)
 
