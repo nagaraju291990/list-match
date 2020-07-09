@@ -45,6 +45,12 @@ outfp = open("list_hash.txt","w")
 
 df = pd.read_excel(listfile)
 df1 = df
+eng_colname = list(df1)[1]
+#print(eng_colname)
+
+#printing duplicates
+outfp3 = open("duplicates_list.txt", "w")
+outfp3.write(str(df[df.duplicated([eng_colname], keep=False)]))
 
 words = []
 for index, row in df.iterrows():
