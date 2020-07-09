@@ -49,8 +49,10 @@ eng_colname = list(df1)[1]
 #print(eng_colname)
 
 #printing duplicates
-outfp3 = open("duplicates_list.txt", "w")
-outfp3.write(str(df[df.duplicated([eng_colname], keep=False)]))
+#outfp3 = open("duplicates_list.txt", "w")
+#outfp3.write(str(df[df.duplicated([eng_colname], keep=False)]))
+duplicates = df[df.duplicated([eng_colname], keep=False)]
+duplicates[1:].to_csv('duplicates.csv', index=False)
 
 words = []
 for index, row in df.iterrows():
