@@ -12,7 +12,11 @@ fp1.close() # Close file
 
 for line in lines:
 	if(line == ""):
-		break
+		continue
+	line = re.sub(r'\[\[\|', '', line)
+	#print("1",line)
+	line = re.sub(r'\| ?[A-Za-z]+\]\]\|?', '', line)
+	#print("2",line)
 	terms = re.findall("(\(\(.*?\)\))", line)
 	for term in terms:
 		#print(term)
@@ -22,9 +26,22 @@ for line in lines:
 		#print(term)
 
 		#print(tokens[0][0], tokens[0][1], sep="####")
-		if(tokens[0][0] == ""):
+		try:
+			r = tokens[0][0]
 			line = re.sub(rf''+term, tokens[0][1], line)
-		else:
-			line = re.sub(rf''+term, tokens[0][0], line)
+		except:
+			try:
+				tokens[0][1]
+				line = re.sub(rf''+term, tokens[0][0], line)
+			except:
+				x = 0
 
+
+		#if(tokens[0][0] == ""):
+			#line = re.sub(rf''+term, tokens[0][1], line)
+		#else:
+			#line = re.sub(rf''+term, tokens[0][0], line)
+	line = re.sub(r'\*?\|\*? ?[A-z]+\*? ?', '', line)
+	line = re.sub(r'\(\(|\)\)|\[\[|\]\]', '', line)
+	line = re.sub(r'\*', '', line)
 	print(line)
