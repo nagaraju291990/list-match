@@ -7,27 +7,29 @@ from argparse import ArgumentParser
 
 parser = ArgumentParser(description='This script will align Subtitle translation files\n\r'+
 						"How to Run?\n" +
-						"python3 " + sys.argv[0] + " -i=input.txt" + " -m=master_list.csv -o=out.csv"
+						"python3 " + sys.argv[0] + " -i=input.txt" + " -m=master_list.csv"
 						)
 parser.add_argument("-i", "--input", dest="inputfile",
 					help="provide input file name",required=True)
 parser.add_argument("-m", "--masterlist", dest="masterlistfile",
 					help="provide list file in xlsx",required=True)
-parser.add_argument("-o", "--output", dest="outfile",
-					help="provide outputfilename",required=True)
+#parser.add_argument("-o", "--output", dest="outfile",
+#					help="provide outputfilename",required=True)
 
 args = parser.parse_args()
 
 inputfile = args.inputfile
 masterlistfile = args.masterlistfile
-outfile = args.outfile
+#outfile = args.outfile
+outfile = re.sub(r' ', '_', inputfile)
+outfile = re.sub(r'\.[a-z][a-z][a-z]', '.xlsx', outfile)
 
 #open file using open file mode
 fp1 = open(inputfile) # Open file on read mode -- input file
 lines = fp1.read().split("\n") # Create a list containing all lines
 fp1.close() # Close file
 
-df = pd.read_csv(masterlistfile, sep='\t')
+df = pd.read_csv(masterlistfile, sep='\t', na_filter=False)
 df1 = df
 
 words = []
@@ -91,6 +93,7 @@ for o in out_hash:
 #print(data)
 #exit(1)
 df = pd.DataFrame(data=data, columns=['Translation-T1', 'Transliteration-T2', 'English Source-T3'])
+df = df.fillna('')
 #print(type(df))
-#print(df)
-df.to_excel('data.xlsx', sheet_name='sheet1', index=False, header=False)
+print(df)
+df.to_excel(outfile, sheet_name='sheet1', index=False, header=False)

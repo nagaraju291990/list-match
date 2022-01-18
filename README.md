@@ -90,5 +90,5 @@ sh run_shell.sh input/ termbase-for-terminology-automation-3.4.xlsx output
 
 ## create terms from master file against input text file
 ```bash
-python3 create_dt_list.py --i=/home/nagaraju/Downloads/10-DL\ C1\ W4\ SV_eng_eng_mar-source.txt --m=/home/nagaraju/Downloads/Digital_Library_Domain_Terms.csv --o=data1.xlsx
+python3 create_dt_list.py --i=/home/nagaraju/Downloads/10-DL\ C1\ W4\ SV_eng_eng_mar-source.txt --m=/home/nagaraju/Downloads/Digital_Library_Domain_Terms.csv
 ```
