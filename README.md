@@ -92,3 +92,8 @@ sh run_shell.sh input/ termbase-for-terminology-automation-3.4.xlsx output
 ```bash
 python3 create_dt_list.py --i=/home/nagaraju/Downloads/10-DL\ C1\ W4\ SV_eng_eng_mar-source.txt --m=/home/nagaraju/Downloads/Digital_Library_Domain_Terms.csv
 ```
+
+## create terms from master file and parallel files
+```bash
+python3 create_tel_dt_list.py -s=W3-L10-Carbohydrates-Part-2_transcript_eng.txt -t=W3-L10-Carbohydrates-Part-2-tel.txt -m=W3-L10-Carbohydrates-Part-2-term-tel.xlsx
+```
