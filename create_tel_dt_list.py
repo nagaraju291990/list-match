@@ -34,7 +34,10 @@ fp1.close() # Close file
 
 #open file using open file mode
 fp2 = open(tgtfile) # Open file on read mode -- input file
-tgtlines = fp2.read().split("\n") # Create a list containing all lines
+temp = fp2.read()#.split("\n") # Create a list containing all lines
+temp = re.sub(r'$', '\n', temp)
+temp = re.sub(r'\\n\n$', '', temp)
+tgtlines = temp.split("\n")
 fp2.close() # Close file
 
 #print(len(srclines), len(tgtlines))
