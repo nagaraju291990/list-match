@@ -50,7 +50,9 @@ for index, row in df.iterrows():
 	if t3_word in all_hash:
 		val = all_hash[t3_word]
 		if(t1_word != "" and t2_word != ""):
-			all_hash[t3_word] = t1_word + "/" + val + "/" + t2_word
+			vals = val.split("\t")
+			#all_hash[t3_word] = t1_word + "/" + val + "/" + t2_word
+			all_hash[t3_word] = t1_word + "/" + vals[0] + "\t" + t2_word + "/" + vals[1]
 		elif(t1_word != ""):
 			all_hash[t3_word] = t1_word + "/" + val
 		elif(t2_word != ""):
