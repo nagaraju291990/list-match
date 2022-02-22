@@ -1,11 +1,10 @@
-#find and write to a xls file the matched domain terms from master file against a input file
 import sys
 import csv
 import re
 import pandas as pd
 from argparse import ArgumentParser
 
-parser = ArgumentParser(description='This script will align Subtitle translation files\n\r'+
+parser = ArgumentParser(description='Create a domain term list specific to the inputfile from masterlist\n\r'+
 						"How to Run?\n" +
 						"python3 " + sys.argv[0] + " -i=input.txt" + " -m=master_list.csv"
 						)
@@ -85,10 +84,21 @@ for o in out_hash:
 	val = out_hash[o]
 	vals = val.split("\t")
 	arr = []
-	arr.append(vals[0])
-	arr.append(vals[1])
-	arr.append(o)
-	data.append(arr)
+
+	if(re.search(r'/', vals[0])):
+		t1s = vals[0].split("/")
+		t2s = vals[1].split("/")
+		for i,j in zip(t1s, t2s):
+			arr=[]
+			arr.append(i)
+			arr.append(j)
+			arr.append(o)
+			data.append(arr)
+	else:
+		arr.append(vals[0])
+		arr.append(vals[1])
+		arr.append(o)
+		data.append(arr)
 	#writer.writerow(data)
 #print(data)
 #exit(1)
