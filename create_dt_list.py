@@ -24,11 +24,12 @@ outfile = re.sub(r' ', '_', inputfile)
 outfile = re.sub(r'\.[a-z][a-z][a-z]', '.xlsx', outfile)
 
 #open file using open file mode
-fp1 = open(inputfile) # Open file on read mode -- input file
+fp1 = open(inputfile, encoding="utf-8") # Open file on read mode -- input file
 lines = fp1.read().split("\n") # Create a list containing all lines
 fp1.close() # Close file
 
 df = pd.read_csv(masterlistfile, sep='\t', na_filter=False)
+#df = pd.read_excel(masterlistfile,  na_filter=False)
 df1 = df
 
 words = []
@@ -49,6 +50,9 @@ for index, row in df.iterrows():
 		t3_word = 'None'
 	if t3_word in all_hash:
 		val = all_hash[t3_word]
+		#to list only unique items
+		if(val == t1_word + "\t" + t2_word):
+			continue
 		if(t1_word != "" and t2_word != ""):
 			vals = val.split("\t")
 			#all_hash[t3_word] = t1_word + "/" + val + "/" + t2_word
@@ -59,8 +63,7 @@ for index, row in df.iterrows():
 			all_hash[t3_word] = val + "/" + t2_word
 	else:
 		all_hash[t3_word] = t1_word + "\t" + t2_word
-	
-	
+
 i = 0
 #out = []
 keys = all_hash.keys()
@@ -87,7 +90,7 @@ for o in out_hash:
 	vals = val.split("\t")
 	arr = []
 
-	if(re.search(r'/', vals[0])):
+	if(re.search(r'/', vals[0]) or re.search(r'/', vals[1])):
 		t1s = vals[0].split("/")
 		t2s = vals[1].split("/")
 		for i,j in zip(t1s, t2s):
@@ -107,5 +110,5 @@ for o in out_hash:
 df = pd.DataFrame(data=data, columns=['Translation-T1', 'Transliteration-T2', 'English Source-T3'])
 df = df.fillna('')
 #print(type(df))
-print(df)
+#print(df)
 df.to_excel(outfile, sheet_name='sheet1', index=False, header=False)
